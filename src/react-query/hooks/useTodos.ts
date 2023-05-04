@@ -29,6 +29,7 @@ const useTodos = () => {
     //returns a promise
     //resolves data or throws error
     queryFn: fetchTodos,
+    staleTime: 10 * 1000,
   });
 };
 

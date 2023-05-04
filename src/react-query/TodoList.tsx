@@ -21,15 +21,13 @@ const TodoList = () => {
   //     .catch((error) => setError(error));
   // }, []);
 
-  // if (error) return <p>{error}</p>;
-
   const fetchTodos = () =>
     axios
       .get<Todo[]>("https://jsonplaceholder.typicode.com/todos")
       .then((res) => res.data);
 
   //fetch data with React Query
-  const { data: todos } = useQuery({
+  const { data: todos, error } = useQuery<Todo[], Error>({
     //data is retrieved from the backend
 
     //that data is then stored in the cache
@@ -45,9 +43,11 @@ const TodoList = () => {
     queryFn: fetchTodos,
   });
 
+  if (error) return <p>{error.message}</p>;
+
   return (
     <ul className="list-group">
-      {todos.map((todo) => (
+      {todos?.map((todo) => (
         <li key={todo.id} className="list-group-item">
           {todo.title}
         </li>

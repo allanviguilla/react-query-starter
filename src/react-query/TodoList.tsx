@@ -8,13 +8,16 @@ const TodoList = () => {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <ul className="list-group">
-      {todos?.map((todo) => (
-        <li key={todo.id} className="list-group-item">
-          {todo.title}
-        </li>
-      ))}
-    </ul>
+    <>
+      <h3>Todos</h3>
+      <ul className="list-group">
+        {todos?.map((todo) => (
+          <li key={todo.id} className="list-group-item">
+            {todo.title}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 

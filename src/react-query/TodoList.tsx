@@ -9,7 +9,6 @@ const TodoList = () => {
 
   return (
     <>
-      <h3>Todos</h3>
       <ul className="list-group">
         {todos?.map((todo) => (
           <li key={todo.id} className="list-group-item">
